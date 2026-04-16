@@ -10,15 +10,16 @@ import { signJwtToken } from "../utils/jwt";
 
 export const googleLoginCallback = asyncHandler(
     async (req: Request, res: Response) => {
-        const jwt = req.jwt;
+        const user = req.user;
 
-        const currentWorkspace = req.user?.currentWorkspace;
-
-        if (!jwt) {
+        if (!user) {
             return res.redirect(
                 `${config.FRONTEND_GOOGLE_CALLBACK_URL}?status=failure`
             );
         }
+        const jwt = signJwtToken({ userId: user._id });
+
+        const currentWorkspace = req.user?.currentWorkspace;
         
         // return res.redirect(
         //     `${config.FRONTEND_ORIGIN}/workspace/${currentWorkspace}`
