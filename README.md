@@ -98,7 +98,7 @@ VITE_GOOGLE_CLIENT_ID=your_google_client_id
 
 ## 🌐 Deployment
 
-> 🚧 Deployment coming soon
+> https://teamsync-xi.vercel.app
 
 ---
 
